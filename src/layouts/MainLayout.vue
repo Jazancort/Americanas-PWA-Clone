@@ -28,6 +28,98 @@
           </q-input>
         </div>
       </q-toolbar>
+      <div>
+        <q-btn
+          class="full-width q-pl-md q-pb-xs q-pr-md"
+          style="font-size: 12px"
+          flat
+          dense
+          no-caps
+          align="between"
+          icon="fas fa-map-marker-alt"
+          icon-right="fas fa-caret-down"
+          label="Rua dezessete, Águas Lindas. Ananindeua - PA"
+          @click="visible = true"
+        >
+        </q-btn>
+        <q-dialog
+          persistent
+          position="bottom"
+          v-model="visible"
+        >
+          <q-card
+            class="full-height"
+            style="">
+            <div align="center"><q-btn color="grey-6" icon="far fa-window-minimize" flat v-close-popup /> </div>
+            <q-card-section>
+              <div class="row">
+                <div class="text-black text-h6" style="font-size: 18px"><b>Escolha um endereço</b></div>
+                <div
+                  class="text-grey-7"
+                  style="font-size: 13px; font-weight: 500; "
+                >
+                  Pra gente te mostrar as melhores ofertas e condições de frete para a sua região :)
+                </div>
+                <div class="q-pt-sm">
+                  <p class="q-pr-xl" style="float:left; font-weight: 500;">Escolha um endereço</p>
+                  <p class="q-pl-xl q-ml-xl text-red" style="float:right; font-weight: 500;">adicionar</p>
+                </div>
+              </div>
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="shape" val="primeiro" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Julio Leite</q-item-label>
+                  <q-item-label caption>Rua dezessete, 5 </q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-separator
+                inset="item"
+              />
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="shape" val="primeiro" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Julyete Azancort</q-item-label>
+                  <q-item-label caption>Rua A17; Quadra 58, 14</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-card-section>
+             <q-separator color="grey-11" size="7px" />
+          </q-card>
+          <q-card>
+          <q-card-section style="height:70px">
+            <q-item>
+              <q-item-section avatar>
+                <q-icon class="q-pl-sm" style="font-size: 1.4em" name="fas fa-crosshairs" />
+              </q-item-section>
+              <q-item-section style="font-size:13px">
+                <q-item-label>Use sua localização</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-card-section>
+
+            <q-separator />
+
+          <q-card-section style="height:70px">
+            <q-item>
+              <q-item-section avatar>
+                <q-icon class="q-pl-sm" style="font-size: 1.4em" name="fas fa-search" />
+              </q-item-section>
+              <q-item-section style="font-size:13px">
+                <q-item-label>Use sua localização</q-item-label>
+              </q-item-section>
+              <q-item-section avatar>
+                <q-icon class="q-pl-sm" style="font-size: 1.4em" name="fas fa-chevron-right" />
+              </q-item-section>
+            </q-item>
+          </q-card-section>
+
+          </q-card>
+        </q-dialog>
+      </div>
     </q-header>
 
     <q-drawer
@@ -196,11 +288,30 @@ export default {
   components: { EssentialLink, SecondLink, ThirdLink },
   data () {
     return {
+      visible: false,
+      EnderecoDialog: false,
       leftDrawerOpen: false,
       essentialLinks: linksData,
       secondLinks: newLinksData,
       thirdLinks: sellPoint,
-      text: ''
+      text: '',
+      dialogLogin: false,
+      isPwd: true,
+      isPwdConfirm: true,
+      form: {
+        nome: '',
+        email: '',
+        senha: '',
+        confirmSenha: ''
+      }
+    }
+  },
+  methods: {
+    register () {
+      this.EnderecoDialog = true
+    },
+    closeRegister () {
+      this.$emit('close')
     }
   }
 }
