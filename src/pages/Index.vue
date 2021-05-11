@@ -1,5 +1,5 @@
 <template>
-  <q-page class="">
+  <q-page padding>
     <div class="row q-pt-xl">
       <img
         class="col"
