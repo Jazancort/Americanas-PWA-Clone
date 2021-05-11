@@ -67,7 +67,7 @@
               </div>
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
-                  <q-radio v-model="shape" val="primeiro" />
+                  <q-radio v-model="option" val="primeiro" />
                 </q-item-section>
                 <q-item-section>
                   <q-item-label>Julio Leite</q-item-label>
@@ -79,7 +79,7 @@
               />
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
-                  <q-radio v-model="shape" val="primeiro" />
+                  <q-radio v-model="option" val="segundo" />
                 </q-item-section>
                 <q-item-section>
                   <q-item-label>Julyete Azancort</q-item-label>
@@ -289,6 +289,7 @@ export default {
   data () {
     return {
       visible: false,
+      option: '',
       EnderecoDialog: false,
       leftDrawerOpen: false,
       essentialLinks: linksData,
